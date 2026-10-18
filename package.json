@@ -1,0 +1,21 @@
+{
+  "name": "telegram-bookmarks",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "postinstall": "npm install --prefix apps/server && npm install --prefix apps/web",
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "npm run dev --prefix apps/server",
+    "dev:web": "npm run dev --prefix apps/web",
+    "build": "npm run build --prefix apps/server && npm run build --prefix apps/web",
+    "typecheck": "npm run typecheck --prefix apps/server && npm run typecheck --prefix apps/web",
+    "test": "npm run test --prefix apps/server && npm run test --prefix apps/web",
+    "start": "npm run start --prefix apps/server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
